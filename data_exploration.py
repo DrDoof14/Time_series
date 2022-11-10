@@ -1,7 +1,3 @@
-#Just search for "Ali" in order to find the code I've tweaked
-
-
-
 import pandas as pd
 import datetime
 import numpy as np
@@ -101,7 +97,7 @@ for i, day in enumerate(get_day(df)):
 # for i, day in enumerate(get_day(df)):
 #     day = day.reset_index(drop=True)
 #     # FIXED: add .dropna() to day in max(day) bc max(array w nan) = nan
-#     all_lows_idx, _ = find_peaks(-day+max(day.dropna()), prominence=1, width=6,distance=15)#Ali(added the distance argument)
+#     all_lows_idx, _ = find_peaks(-day+max(day.dropna()), prominence=1, width=6,distance=15)
 #     # since hight arg doesn't work with negative "day" values
 #     # i remove manually all values above lb
 #     below_lb_idx = []
@@ -117,7 +113,6 @@ for i, day in enumerate(get_day(df)):
 
 
 #==============================================================================================================
-#Ali
 
 #function to print the lows in the required format
 # month day range
@@ -167,7 +162,6 @@ def show_low_dates_ranges(lb,flag):
 #========================================================================================================================
 
 #========================================================================================================================
-#Ali
 #in order to deal with multiple lows/peaks, we can chose a value for the "distance" argument
 #of the find_peaks arguemnt
 #I chose 15
@@ -181,7 +175,7 @@ for i, day in enumerate(get_day(df)):
     date = day.index[0].date()
     day = day.reset_index(drop=True)
     peaks, _ = find_peaks(day, height=180, prominence=1, width=6,distance=10)
-    all_lows_idx, _ = find_peaks(-day+max(day.dropna()), prominence=1, width=6,distance=15)#Ali(added the distance argument)
+    all_lows_idx, _ = find_peaks(-day+max(day.dropna()), prominence=1, width=6,distance=15) #(added the distance argument)
     below_lb_idx = []
     for low_value, low_idx in zip(day[all_lows_idx], all_lows_idx):
         if low_value <= lb:
