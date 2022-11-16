@@ -31,7 +31,7 @@ df = ohio[patient_number].copy(True)
 df = df.resample('5min').mean()
 
 # for this analysis i keep only the glucose values
-df = pd.DataFrame(df[['glucose']])
+df = pd.DataFrame(df[['info']])
 
 # defining target threshold 
 lb = 70
@@ -63,7 +63,7 @@ def get_day(df, hypo_night_night_end = '08:00:00'):
         dday = df.loc[day_start:day_end,:] # df containing 289 ROWS of almost a single day*
         dday = dday.iloc[:-1] # df containing 288 ROWS of a single day*
 
-        yield pd.Series(dday.glucose.values,
+        yield pd.Series(dday.info.values,
                         index=pd.date_range(day_start, day_end, freq='5min')[:-1])
 
 # alternatively i can create a date object containing all days for easier inspection
